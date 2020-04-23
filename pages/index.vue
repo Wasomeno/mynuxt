@@ -1,17 +1,19 @@
 <template>
   <div class="container min-w-full flex flex-col">
-    <div class="top flex items-center justify-center h-screen bg-gray-300">
-      <h1 class="font-thin text-6xl">
+    <div class="top flex items-center justify-center h-screen bg-gray-300" id="top">
+    <transition appear @enter="contentAnimation" :css="false">
+      <h1 class="font-thin text-6xl" id="title">
         <span>.</span>
         <span>Q</span>
         <span>U</span>
         <span>A</span>
       </h1>
+    </transition>
     </div>
     <div class="mid h-screen grid grid-cols-2">
       <div class="left-side bg-red-300 flex flex-col items-baseline justify-center">
         <div class="content mx-12">
-        <h1 class="font-medium text-4xl mb-3">MENU</h1>
+        <h1 class="font-medium text-4xl mb-3">RECIPES</h1>
         <p class="font-normal text-lg text-justify">
         A progression of rare and beautiful 
         ingredients where texture, flavour 
@@ -38,6 +40,7 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 
 export default {
   head() {
@@ -51,14 +54,31 @@ export default {
       }
     ]
 }
+},
+methods: {
+    contentAnimation(a) {
+      const tl =  gsap.timeline()
+      tl.fromTo(a,  {x: -50, opacity: "0%"}, {duration: 1.5, x: 0, opacity: "100%", ease: "expo.inOut" })
+    }
 }
 }
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
+/* .transition {
+      display: flex;
+      position: absolute;
+      z-index: 10;
+      height: 100vh;
+      width: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      pointer-events: none;
+  }
+  .transition li {
+      transform: scaleY(0);
+      background: #2d3748;
+      width: 20%;
+  } */
 </style>
