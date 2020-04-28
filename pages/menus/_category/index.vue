@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto w-full">
-  <h1 class="m-5 p-3 font-light text-5xl text-center">Our Recipes</h1>
+  <h1 class="m-5 p-3 font-light text-5xl text-center">{{ this.$route.params.category }} Recipes</h1>
     <div class="grid grid-cols-4 gap-3 my-5">
         <nuxt-link v-for="recipe in recipes" :key="recipe.idMeal" :to="'/menus/'+ recipe.strCategory +'/'+recipe.idMeal">
           <div  class="max-w-sm rounded overflow-hidden shadow-lg">

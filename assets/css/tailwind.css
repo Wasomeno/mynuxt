@@ -72329,3 +72329,16 @@ video {
     transition-delay: 1000ms;
   }
 }
+.top {
+  background-image: url("/cook.jpg");
+  position: relative;
+}
+.top::after {
+  content: "";
+  top: 0;
+  opacity: 50%;
+  background-color: lightgray;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

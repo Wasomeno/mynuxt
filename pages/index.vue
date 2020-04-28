@@ -1,8 +1,8 @@
 <template>
   <div class="container min-w-full flex flex-col">
-    <div class="top flex items-center justify-center h-screen bg-gray-300" id="top">
+    <div class="top flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat" id="top">
     <transition appear @enter="contentAnimation" :css="false">
-      <h1 class="font-thin text-6xl" id="title">
+      <h1 class="font-thin text-6xl relative z-10" id="title">
         <span>.</span>
         <span>Q</span>
         <span>U</span>
@@ -11,7 +11,7 @@
     </transition>
     </div>
     <div class="mid h-screen grid grid-cols-2">
-      <div class="left-side bg-red-300 flex flex-col items-baseline justify-center">
+      <div class="left-side flex flex-col items-baseline justify-center">
         <div class="content mx-12">
         <h1 class="font-medium text-4xl mb-3">RECIPES</h1>
         <p class="font-normal text-lg text-justify">
@@ -27,13 +27,26 @@
         <button class="bg-white w-32 h-10 border-solid border-2 border-black mt-5">MENU</button>
       </div>
       </div>
-      <div class="right-side">
-
+      <div class="right-side flex items-center justify-center">
+        <img src="/foods.jpg" class="w-11/12">
       </div>
     </div>
-    <div class="bottom h-screen bg-blue-400">
-      <div class="gallery grid">
-
+    <div class="bottom h-auto bg-gray-100 p-10">
+      <div class="container mx-auto">
+      <h1 class="text-5xl mb-10 font-thin text-center">Our Top Recipes</h1>
+      <div class="products grid grid-cols-5 gap-4">
+          <nuxt-link v-for="prod in prods" :key="prod.idMeal" :to="'/menus/'+ prod.strCategory +'/'+prod.idMeal">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img :src="prod.strMealThumb" class="w-full">
+          <div class="px-6 py-4">
+            <div class="font-bold text-lg mb-2">{{ prod.strMeal}}</div>
+            <div class="text-gray-700 text-base flex justify-between items-center">
+              {{ prod.strCategory}} | {{ prod.strArea}}<img :src="src + prod.strArea + ft" class="w-8 h-8">
+            </div>
+          </div>
+        </div>
+        </nuxt-link>
+      </div>
       </div>
     </div>
   </div>
@@ -41,8 +54,17 @@
 
 <script>
 import gsap from 'gsap'
-
+import axios from 'axios'
 export default {
+  data(){
+    return{
+      prods: []
+    }
+  },
+  async created() {
+    const rec = await axios.get("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+    this.prods = rec.data.meals 
+  },
   head() {
     return {
       title: "Welcome To .QUA",
