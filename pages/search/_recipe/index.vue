@@ -4,15 +4,9 @@
     <div class="grid grid-cols-4 gap-3 my-5">
         <nuxt-link v-for="recipe in recipes" :key="recipe.idMeal" :to="'/menus/'+ recipe.strCategory +'/'+recipe.idMeal">
           <div  class="max-w-sm rounded overflow-hidden shadow-lg">
-            <img :src="recipe.strMealThumb" class="w-full">
+            <img :src="recipe.strMealThumb" class="w-full" alt="recipe-thumbnail">
           <div class="px-6 py-4">
             <div class="font-bold text-lg mb-2">{{ recipe.strMeal}}</div>
-            <div class="text-gray-700 text-base flex justify-between items-center">
-              {{ recipe.strCategory}} | {{ recipe.strArea}}<img :src="src + recipe.strArea + ft" class="w-8 h-8">
-            </div>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ recipe.strTags}}</span>
           </div>
         </div>
         </nuxt-link>

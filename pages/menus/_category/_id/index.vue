@@ -1,15 +1,15 @@
 <template>
-<div class="container mx-auto w-full mt-5">
+<div class="container mx-auto w-full mt-5"> 
     <div v-for="detail in details" :key="detail" class="meal">
-    <h1 class="font-light text-5xl text-center my-5">{{ detail.strMeal }}</h1>
-    <div class="grid grid-cols-3 grid-rows-2 my-5">
+    <h1 class="font-light text-4xl sm:text-5xl text-center my-5">{{ detail.strMeal }}</h1>
+    <div class="grid grid-cols-2 sm:grid-cols-3 grid-rows-1 sm:grid-rows-2 my-5">
         <div class="meal-pict bg-red-300 col-span-1">
-            <img :src="detail.strMealThumb" class="w-full">
+            <img :src="detail.strMealThumb" class="w-full h-full" alt="meal-thumbnail">
         </div>
         <div class="meal-ingr bg-blue-300 col-span-2 flex flex-col justify-center">
-            <h1 class="my-5 text-center font-medium text-xl">Ingredients</h1>
+            <h1 class="my-3 sm:my-5 text-center font-medium text-base sm:text-xl">Ingredients</h1>
             <ul class="grid grid-cols-2">
-            <div class="left mx-auto">
+            <div class="left ml-3 my-3 sm:mx-auto text-xs sm:text-base">
             <li>
                 <h1>
                     {{detail.strIngredient1}} 
@@ -71,7 +71,7 @@
                 </h1>
             </li>
             </div>
-            <div class="right mx-auto">
+            <div class="right ml-3 my-3 sm:mx-auto text-xs sm:text-base">
             <li>
                 <h1>
                     {{detail.strIngredient11}} 
@@ -136,8 +136,8 @@
             </ul>
         </div>
         <div class="meal-inst bg-purple-300 col-span-3">
-            <h1 class="text-xl font-medium text-center my-5">Instructions</h1>
-            <p class="mx-10">{{ detail.strInstructions}}</p>
+            <h1 class="text-base sm:text-xl font-medium text-center my-3 sm:my-5">Instructions</h1>
+            <p class="mx-10 text-xs sm:text-base">{{ detail.strInstructions}}</p>
         </div>
     </div>
     </div>

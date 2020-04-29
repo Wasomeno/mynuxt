@@ -1,20 +1,21 @@
 <template>
 <div class="container mx-auto w-full">
-    <ul class="h-16 flex items-center justify-between">
-        <li class="font-medium">
+    <ul class="h-16 flex items-center justify-around sm:justify-between">
+        <li class="font-medium text-xs sm:text-base">
             <nuxt-link to="/">Home</nuxt-link>
         </li>
-        <li class="font-medium">
+        <li class="font-medium text-xs sm:text-base">
             <nuxt-link to="/menus">Menus</nuxt-link>
         </li>
-        <li class="font-medium">
+        <li class="font-medium text-xs sm:text-base">
             <nuxt-link to="/about">About</nuxt-link>
         </li>
         <li>
-            <form @submit.prevent="onSubmit" class="flex relative">
-            <input v-model="text" class="bg-white border-2 border-black rounded-lg py-2 px-4 block w-full" 
-            type="recipe" placeholder="Search Recipes...">
-            <button type="submit" class="absolute" style="top: 30%;right:5%"><img src="/loupe.png" class="w-5"></button>
+            <form @submit.prevent="onSubmit" class="flex relative" >
+            <input v-model="text" class="bg-white border-2 border-black rounded-lg py-1 sm:py-2 px-4 block w-full" 
+            type="recipe" placeholder="Search Recipes..." id="search-form">
+            <label for="search-form">|</label>
+            <button type="submit" class="absolute" style="top: 30%;right:5%"><img src="/loupe.png" class="w-4 sm:w-5" alt="search-icon"></button>
             </form>
         </li>
     </ul>
@@ -31,7 +32,6 @@ export default {
     },
     methods: {
         onSubmit() {
-            this.$emit("search-text", this.text)
             window.location.href = "/search/"+this.text;
             this.text = ""
         }

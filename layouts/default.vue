@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar v-on:search-text="searchText"/>
+    <Navbar/>
       <nuxt />
     <Footer/>
   </div>
@@ -9,7 +9,6 @@
 <script>
 import Navbar from "../components/navbar"
 import Footer from "../components/footer"
-import axios from "axios"
 export default {
   components: {
     Navbar,

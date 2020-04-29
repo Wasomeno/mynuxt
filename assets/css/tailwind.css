@@ -72330,7 +72330,7 @@ video {
   }
 }
 .top {
-  background-image: url("/cook.jpg");
+  /* background-image: url("/cook.jpg"); */
   position: relative;
 }
 .top::after {

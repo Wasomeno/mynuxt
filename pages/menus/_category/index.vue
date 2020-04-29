@@ -1,18 +1,12 @@
 <template>
-    <div class="container mx-auto w-full">
-  <h1 class="m-5 p-3 font-light text-5xl text-center">{{ this.$route.params.category }} Recipes</h1>
-    <div class="grid grid-cols-4 gap-3 my-5">
+    <div class="container mx-auto w-full p-10 sm:p-0">
+  <h1 class="m-5 p-3 font-light text-4xl sm:text-5xl text-center">{{ this.$route.params.category }} Recipes</h1>
+    <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 my-5">
         <nuxt-link v-for="recipe in recipes" :key="recipe.idMeal" :to="'/menus/'+ $route.params.category +'/'+recipe.idMeal">
           <div  class="max-w-sm rounded overflow-hidden shadow-lg">
-            <img :src="recipe.strMealThumb" class="w-full">
+            <img :src="recipe.strMealThumb" class="w-full" alt="recipe-thumbnail">
           <div class="px-6 py-4">
-            <div class="font-bold text-lg mb-2">{{ recipe.strMeal}}</div>
-            <div class="text-gray-700 text-base flex justify-between items-center">
-              {{ recipe.strCategory}} | {{ recipe.strArea}}<img :src="src + recipe.strArea + ft" class="w-8 h-8">
-            </div>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ recipe.strTags}}</span>
+            <div class="font-bold text-sm sm:text-lg mb-2">{{ recipe.strMeal}}</div>
           </div>
         </div>
         </nuxt-link>
