@@ -2,8 +2,11 @@
 <div class="container mx-auto w-full">
     <ul class="h-16 flex items-center justify-around sm:justify-between">
         <li class="font-medium text-xs sm:text-base">
-            <nuxt-link to="/">Home</nuxt-link>
+            <transition enter-class @mouseover="over" :css="false">
+        <nuxt-link to="/">Home</nuxt-link>
+        </transition>
         </li>
+        
         <li class="font-medium text-xs sm:text-base">
             <nuxt-link to="/menus">Menus</nuxt-link>
         </li>
@@ -23,6 +26,7 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 export default {
     name: "Navbar",
     data(){
@@ -34,6 +38,12 @@ export default {
         onSubmit() {
             window.location.href = "/search/"+this.text;
             this.text = ""
+        },
+        over(a){
+            gsap.to(a, 0.5, {color:"red"})
+        },
+        out(a){
+            gsap.to(a, 0.5, {color:"black"})
         }
     }
 }

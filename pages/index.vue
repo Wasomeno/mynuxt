@@ -1,14 +1,14 @@
 <template>
   <div class="container min-w-full w-full flex flex-col">
     <div class="top flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat" id="top">
-    <!-- <transition appear @enter="contentAnimation" :css="false"> -->
+    <transition appear @enter="contentAnimation" :css="false">
       <h1 class="font-thin text-5xl sm:text-6xl relative z-10" id="title">
         <span>.</span>
         <span>Q</span>
         <span>U</span>
         <span>A</span>
       </h1>
-    <!-- </transition> -->
+    </transition>
     </div>
     <div class="mid h-screen grid grid-cols-2">
       <div class="left-side flex flex-col items-baseline justify-center">

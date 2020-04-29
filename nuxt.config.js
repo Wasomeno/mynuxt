@@ -49,6 +49,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    "https" : true
   },
   /*
   ** Build configuration
@@ -59,5 +60,23 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  pwa: {
+    workbox: {
+      "cacheNames" : "QUA",
+      "preCaching" : [
+       { url : "/" },
+       { url : "/menus" }
+      ]
+    },
+    manifest: {
+    "name": "QUA Recipes",
+    "short_name": "QUA",
+    "theme_color": "#ffffff",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "Scope": "/",
+    "start_url": "/",
+    }
+    }
   }
-}
