@@ -25,11 +25,12 @@ export default {
       categories: []
     }
   },
+  methods: {
   async created() {
     const cat = await axios.get("https://www.themealdb.com/api/json/v1/1/categories.php")
-    this.categories = cat.data.categories
+    this.categories = cat.data
+  }
   },
-  
   head() {
     return {
       title: "Our Recipes",
