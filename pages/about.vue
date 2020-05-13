@@ -1,6 +1,6 @@
 <template>
-<div class="container mx-auto min-w-full">
-<h1 class="font-thin text-2xl text-center">My Name is Kevin</h1>
+<div class="container mx-auto h-screen min-w-full">
+<h1 class="font-light text-6xl text-center">What is QUA  ?</h1>
 </div>    
 </template>
 <script>

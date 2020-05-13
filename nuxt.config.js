@@ -12,7 +12,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
   /*
@@ -43,13 +43,32 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyAFr6sj-9W9Encisjklbx7f0at40i50EE0",
+          authDomain: "my-nuxt-11393.firebaseapp.com",
+          databaseURL: "https://my-nuxt-11393.firebaseio.com",
+          projectId: "my-nuxt-11393",
+          storageBucket: "my-nuxt-11393.appspot.com",
+          messagingSenderId: "618849559678",
+          appId: "1:618849559678:web:7847155b4b23e4f34ba42f",
+          measurementId: "G-0DD4N8J8T4"
+        },
+        services: {
+          auth: true
+        }
+      }
+    ]
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    "https" : true
+    "baseURL" : "http://localhost:3000/api"
   },
   /*
   ** Build configuration
@@ -61,6 +80,23 @@ export default {
     extend (config, ctx) {
     }
   },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+        // globalToken: true,
+        // autoFetchUser: true
+      }
+    }
+  },
+
   pwa: {
     workbox: {
       "cacheNames" : "QUA",
@@ -69,6 +105,7 @@ export default {
        { url : "/menus" }
       ]
     },
+
     manifest: {
     "name": "QUA Recipes",
     "short_name": "QUA",
@@ -77,6 +114,24 @@ export default {
     "display": "standalone",
     "Scope": "/",
     "start_url": "/",
+    },
+
+    firebase: {
+      config: {
+        apiKey: "AIzaSyAFr6sj-9W9Encisjklbx7f0at40i50EE0",
+        authDomain: "my-nuxt-11393.firebaseapp.com",
+        databaseURL: "https://my-nuxt-11393.firebaseio.com",
+        projectId: "my-nuxt-11393",
+        storageBucket: "my-nuxt-11393.appspot.com",
+        messagingSenderId: "618849559678",
+        appId: "1:618849559678:web:7847155b4b23e4f34ba42f",
+        measurementId: "G-0DD4N8J8T4"
+      },
+      services: {
+        auth: true // Just as example. Can be any other service.
+      }
     }
+    
+
     }
   }
