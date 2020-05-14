@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/firebase": "^5.2.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/toast": "^3.3.0",
     "firebase": "^7.14.3",
     "gsap": "^3.2.6",
     "nuxt": "^2.12.2",

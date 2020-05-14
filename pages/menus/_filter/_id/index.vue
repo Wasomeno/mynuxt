@@ -12,60 +12,78 @@
             <div class="left ml-3 my-3 sm:mx-auto text-xs sm:text-base">
             <li>
                 <h1>
-                    {{detail.strIngredient1}} 
+                     {{detail.strIngredient1}} 
                     ( {{detail.strMeasure1}} )
                 </h1>
             </li>
             <li>
                 <h1>
-                    {{detail.strIngredient2}} 
+                     {{detail.strIngredient2}} 
                     ( {{detail.strMeasure2}} )
                 </h1>
             </li>
             <li>
                 <h1>
-                    {{detail.strIngredient3}} 
+                     {{detail.strIngredient3}} 
                     ( {{detail.strMeasure3}} )
                 </h1>
             </li>
             <li>
-                <h1>
-                    {{detail.strIngredient4}} 
+                <h1 v-if="detail.strMeasure4 == null">
+                </h1>
+
+                
+                <h1 v-else>
+                     {{detail.strIngredient4}} 
                     ( {{detail.strMeasure4}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient5 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient5}} 
                     ( {{detail.strMeasure5}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient6 == ''">
+                </h1>
+                
+                <h1 v-else>
                     {{detail.strIngredient6}} 
                     ( {{detail.strMeasure6}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient7 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient7}} 
                     ( {{detail.strMeasure7}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient8 == ''">
+                </h1>
+                
+                <h1 v-else>
                     {{detail.strIngredient8}} 
                     ( {{detail.strMeasure8}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient9 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient9}} 
                     ( {{detail.strMeasure9}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient10 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient10}} 
                     ( {{detail.strMeasure10}} )
                 </h1>
@@ -73,61 +91,84 @@
             </div>
             <div class="right ml-3 my-3 sm:mx-auto text-xs sm:text-base">
             <li>
-                <h1>
+                <h1 v-if="detail.strMeasure11 == ''"> 
+                </h1>
+
+                <h1 v-else>
                     {{detail.strIngredient11}} 
                     ( {{detail.strMeasure11}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient12 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient12}} 
                     ( {{detail.strMeasure12}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient13 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient13}} 
                     ( {{detail.strMeasure13}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient14 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient14}} 
                     ( {{detail.strMeasure14}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient15 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient15}} 
                     ( {{detail.strMeasure15}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient16 == ''">
+                </h1>
+
+                <h1 v-else>
                     {{detail.strIngredient16}} 
                     ( {{detail.strMeasure16}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient17 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient17}} 
                     ( {{detail.strMeasure17}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient18 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient18}} 
                     ( {{detail.strMeasure18}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient19 == ''">
+                </h1>
+                <h1 v-else>
                     {{detail.strIngredient19}} 
                     ( {{detail.strMeasure19}} )
                 </h1>
             </li>
             <li>
-                <h1>
+                <h1 v-if="detail.strIngredient20 == ''">
+                </h1>
+                
+                <h1 v-else>
                     {{detail.strIngredient20}} 
                     ( {{detail.strMeasure20}} )
                 </h1>

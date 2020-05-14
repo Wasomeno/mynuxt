@@ -13,10 +13,19 @@ export default {
        try{
       await this.$fireAuth.signInWithEmailAndPassword(
         loginInfo.email, loginInfo.password)
-        alert("Login Succes")
+        this.$toast.success("Login Success !", {
+          theme: "bubble",
+          position: "top-center",
+          duration: "1500"
+        })
+        this.$router.push("/")
        }
        catch(e){
-         alert(e)
+        this.$toast.error(e, {
+          theme: "bubble",
+          position: "top-center",
+          duration: "1600"
+        })
        }
     }
   }

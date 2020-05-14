@@ -15,9 +15,18 @@ export default {
       registerInfo.email,
       registerInfo.password
     )
+    this.$toast.success("Registration Success !", {
+          theme: "bubble",
+          position: "top-center",
+          duration: "1500"
+        })
     this.$router.push("/login")
   } catch (e) {
-    alert(e)
+    this.$toast.error(e, {
+          theme: "bubble",
+          position: "top-center",
+          duration: "1500"
+        })
   }
 }   
 }

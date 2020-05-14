@@ -10,7 +10,7 @@
         </nuxt-link>
           <div class="px-6 py-4 flex justify-between">
             <div class="font-bold text-sm sm:text-lg mb-2 text-center sm:text-center">{{ cat.strMeal}}</div>
-            <favorite/>
+            <favorite :id="cat.idMeal" :pict="cat.strMealThumb" :name="cat.strMeal" />
             </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ export default {
     return {
       ft: ".png",
       src: "/",
-      categories: []
+      categories: [],
     }
   },
   async created() {
