@@ -32,7 +32,7 @@ export default {
   ],
 
   router: {
-  // middleware: ["authenticated"],
+  middleware: ["authenticated"],
   },
   /*
   ** Nuxt.js dev-modules
