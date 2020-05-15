@@ -4,29 +4,35 @@
   <div class="grid grid-cols-4 gap-10">
   <filterComponent/>
     <div class="grid grid-cols-3 col-span-3 sm:grid-cols-4 gap-3 my-5">
-        <nuxt-link v-for="recipe in recipes" :key="recipe.idMeal" :to="'/menus/'+ $route.params.filter +'/'+recipe.idMeal">
-          <div  class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div v-for="recipe in recipes" :key="recipe.idMeal" class="max-w-sm rounded overflow-hidden shadow-lg" style="height:350px;">
+        <nuxt-link :to="'/menus/'+ $route.params.filter +'/'+recipe.idMeal">
             <img :src="recipe.strMealThumb" class="w-full" alt="recipe-thumbnail">
-          <div class="px-6 py-4">
-            <div class="font-bold text-sm sm:text-lg mb-2">{{ recipe.strMeal}}</div>
+        </nuxt-link>
+          <div class="px-6 py-4 flex justify-between">
+            <div class="font-medium text-sm sm:text-lg mb-2 mr-3">{{ recipe.strMeal}}</div>
+            <favorite @click.native="addFav(recipe.idMeal,recipe.strMealThumb,recipe.strMeal,recipe.strCategory)"/>
           </div>
         </div>
-        </nuxt-link>
       </div>
       </div>
 </div>
 </template>
 <script>
+const STORAGE_KEY = "fav-storage"
+
 import axios from "axios"
 import filterComponent from "../../../components/filter"
+import favorite from "../../../components/wishbutton"
 
 export default {
   components: {
-    filterComponent
+    filterComponent,
+    favorite
   },
     data() {
     return {
       recipes: [],
+      favs: [],
       title: this.$route.params.filter,
       newTitle: ""
     }
@@ -46,7 +52,16 @@ export default {
       }else {
       this.newTitle = a.replace("i=","")    
       }
-    }
+    },
+    addFav(favId,favPict,favName,favCategory) {
+      this.favs.push({id: favId, picture: favPict, name: favName, category: favCategory})
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.favs))
+      this.$toast.success("Added to favorites !", {
+          theme: "bubble",
+          position: "top-center",
+          duration: "1500"
+        })
+  },
   }
   ,
   head() {

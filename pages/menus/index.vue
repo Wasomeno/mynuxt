@@ -4,12 +4,12 @@
     <div class="grid grid-cols-4 gap-10">
     <filterComponent/>
     <div class="grid grid-cols-3 col-span-3 sm:grid-cols-4 gap-3 my-5">
-          <div v-for="cat in categories" :key="cat.idCategory"   class="max-w-sm rounded overflow-hidden shadow-lg">
-             <nuxt-link :to="'menus/'+cat.strCategory+'/'+cat.idMeal">
+          <div v-for="cat in categories" :key="cat.idCategory" class="max-w-sm rounded overflow-hidden shadow-lg">
+            <nuxt-link :to="'menus/'+cat.strCategory+'/'+cat.idMeal">
             <img :src="cat.strMealThumb" class="w-full" alt="category-thumbnail">
-        </nuxt-link>
+            </nuxt-link>
           <div class="px-6 py-4 flex justify-between">
-            <div class="font-medium text-sm sm:text-lg mb-2 text-center sm:text-center">{{ cat.strMeal}}</div>
+            <div class="font-medium text-sm sm:text-lg mb-2 mr-3 text-center sm:text-center">{{ cat.strMeal}}</div>
             <favorite @click.native="addFav(cat.idMeal,cat.strMealThumb,cat.strMeal,cat.strCategory)" />
             </div>
         </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-const STORAGE_KEY = "fav-storage";
+const STORAGE_KEY = "fav-storage"
 
 import axios from "axios"
 import filterComponent from "../../components/filter"
