@@ -9,8 +9,8 @@
             <img :src="cat.strMealThumb" class="w-full" alt="category-thumbnail">
         </nuxt-link>
           <div class="px-6 py-4 flex justify-between">
-            <div class="font-bold text-sm sm:text-lg mb-2 text-center sm:text-center">{{ cat.strMeal}}</div>
-            <favorite :id="cat.idMeal" :pict="cat.strMealThumb" :name="cat.strMeal" />
+            <div class="font-medium text-sm sm:text-lg mb-2 text-center sm:text-center">{{ cat.strMeal}}</div>
+            <favorite @click.native="addFav(cat.idMeal,cat.strMealThumb,cat.strMeal,cat.strCategory)" />
             </div>
         </div>
       </div>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+const STORAGE_KEY = "fav-storage";
+
 import axios from "axios"
 import filterComponent from "../../components/filter"
 import favorite from "../../components/wishbutton"
@@ -33,13 +35,24 @@ export default {
       ft: ".png",
       src: "/",
       categories: [],
+      favs: []
     }
   },
   async created() {
     const cat = await axios.get("https://www.themealdb.com/api/json/v1/1/search.php?s=u")
     this.categories = cat.data.meals
   },
-  
+  methods: {
+    addFav(favId,favPict,favName,favCategory) {
+      this.favs.push({id: favId, picture: favPict, name: favName, category: favCategory})
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.favs))
+      this.$toast.success("Added to favorites !", {
+          theme: "bubble",
+          position: "top-center",
+          duration: "1500"
+        })
+    }
+  },
   head() {
     return {
       title: "Our Recipes",

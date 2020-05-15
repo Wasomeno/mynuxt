@@ -24,11 +24,11 @@
         </li>
         
         <li v-if="this.$fireAuth.currentUser != null" class="font-lighter text-xs sm:text-base">
-            {{ this.$fireAuth.currentUser.email }}
+            <h1 class="font-thin">{{ this.$fireAuth.currentUser.email }}</h1>
             <button @click="logOut()">Logout</button>
         </li>
         <li v-else>
-            <nuxt-link :to="'/login'">Login</nuxt-link>            
+            <nuxt-link :to="'/login'" class="mx-4">Login</nuxt-link>            
             <nuxt-link :to="'/register'">Register</nuxt-link>
         </li>
     </ul>
@@ -42,7 +42,8 @@ export default {
     name: "Navbar",
     data(){
         return{
-            text:""
+            text:"",
+            user: null
         }
     },
     methods: {
@@ -55,9 +56,18 @@ export default {
             tl.to("#nav",{duration: 1.2, height:"4rem", ease: "expo.inOut"})
             .to("li",{duration: 1, opacity: "100%", bottom: "0%", ease: "expo.inOut", stagger: 0.15})
         },
-        logOut() {
-            this.$fireAuth.signOut()
-            this.$router.push("/")
+        async logOut() {
+            try{
+            await this.$fireAuth.signOut()
+            this.$router.push("/login")
+            }
+            catch(e){
+            this.$toast.error(e, {
+            theme: "bubble",
+            position: "top-center",
+            duration: "1600"
+            })
+            }
         }
     }
 }

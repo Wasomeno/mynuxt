@@ -3,10 +3,10 @@
     <div v-for="detail in details" :key="detail" class="meal">
     <h1 class="font-light text-4xl sm:text-5xl text-center my-5">{{ detail.strMeal }}</h1>
     <div class="grid grid-cols-2 sm:grid-cols-3 grid-rows-1 sm:grid-rows-2 my-5">
-        <div class="meal-pict bg-red-300 col-span-1">
+        <div class="meal-pict col-span-1">
             <img :src="detail.strMealThumb" class="w-full h-full" alt="meal-thumbnail">
         </div>
-        <div class="meal-ingr bg-blue-300 col-span-2 flex flex-col justify-center">
+        <div class="meal-ingr bg-gray-300 col-span-2 flex flex-col justify-center">
             <h1 class="my-3 sm:my-5 text-center font-medium text-base sm:text-xl">Ingredients</h1>
             <ul class="grid grid-cols-2">
             <div class="left ml-3 my-3 sm:mx-auto text-xs sm:text-base">
@@ -29,10 +29,9 @@
                 </h1>
             </li>
             <li>
-                <h1 v-if="detail.strMeasure4 == null">
+                <h1 v-if="detail.strIngredient4 == ''">
                 </h1>
 
-                
                 <h1 v-else>
                      {{detail.strIngredient4}} 
                     ( {{detail.strMeasure4}} )
@@ -91,7 +90,7 @@
             </div>
             <div class="right ml-3 my-3 sm:mx-auto text-xs sm:text-base">
             <li>
-                <h1 v-if="detail.strMeasure11 == ''"> 
+                <h1 v-if="detail.strIngredient11 == ''"> 
                 </h1>
 
                 <h1 v-else>
@@ -176,7 +175,7 @@
             </div>
             </ul>
         </div>
-        <div class="meal-inst bg-purple-300 col-span-3">
+        <div class="meal-inst bg-gray-500 col-span-3">
             <h1 class="text-base sm:text-xl font-medium text-center my-3 sm:my-5">Instructions</h1>
             <p class="mx-10 text-xs sm:text-base">{{ detail.strInstructions}}</p>
         </div>
